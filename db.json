@@ -1,0 +1,81 @@
+{
+  "compliments": [
+    {
+      "id": 1,
+      "text": "I have just three things to teach: simplicity, patience, compassion. These three are your greatest treasures.",
+      "source": "Lao Tzu",
+      "color": "#D64933"
+    },
+    {
+      "id": 2,
+      "text": "Do today what others won't and achieve tomorrow what others can't.",
+      "source": "Jerry Rice",
+      "color": "#0C7C59"
+    },
+    {
+      "id": 3,
+      "text": "In character, in manner, in style, in all things, the supreme excellence is simplicity.",
+      "source": "Henry Wadsworth Longfellow",
+      "color": "#58A4B0"
+    },
+    {
+      "id": 4,
+      "text": "If we don't discipline ourselves, the world will do it for us.",
+      "source": "William Feather",
+      "color": "#C94277"
+    },
+    {
+      "id": 5,
+      "text": "Rule your mind or it will rule you.",
+      "source": "Horace",
+      "color": "#3066BE"
+    },
+    {
+      "id": 6,
+      "text": "All that we are is the result of what we have thought.",
+      "source": "Buddha",
+      "color": "#63458A"
+    },
+    {
+      "id": 7,
+      "text": "Doing just a little bit during the time we have available puts you that much further ahead than if you took no action at all.",
+      "source": "Pulsifer, Take Action; Don't Procrastinate",
+      "color": "#84894A"
+    },
+    {
+      "id": 8,
+      "text": "Never leave that till tomorrow which you can do today.",
+      "source": "Benjamin Franklin",
+      "color": "#43AA8B"
+    },
+    {
+      "id": 9,
+      "text": "Procrastination is like a credit card: it's a lot of fun until you get the bill.",
+      "source": "Christopher Parker",
+      "color": "#7B6D8D"
+    },
+    {
+      "id": 10,
+      "text": "Someday is not a day of the week.",
+      "source": "Author Unknown",
+      "color": "#CA895F"
+    },
+    {
+      "id": 11,
+      "text": "Tomorrow is often the busiest day of the week.",
+      "source": "Spanish Proverb",
+      "color": "#F6AE2D"
+    },
+    {
+      "id": 12,
+      "text": "I can accept failure, everyone fails at something. But I can't accept not trying.",
+      "source": "Michael Jordan",
+      "color": "#D57A66"
+    },
+    {
+      "email": "giodavlasheridze88@gmail.com",
+      "password": "giogio",
+      "id": 13
+    }
+  ]
+}

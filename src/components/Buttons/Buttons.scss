@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__btn {
+    margin: 15px 80px;
+    width: 180px;
+    padding: 15px;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}

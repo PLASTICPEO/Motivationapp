@@ -1,0 +1,30 @@
+$formcontainerbgColor: #98c3a4;
+$formbgColor: #63a375;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: $formcontainerbgColor;
+  width: 100vw;
+  height: 100vh;
+
+  &__form {
+    border-radius: 10px;
+    padding: 25px;
+    background-color: $formbgColor;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+    color: aliceblue;
+  }
+}

@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+$bgColor: #c35353;
+$buttonTextColor: #58af94;
+$buttonWidth: 200px;
+$font: "Nunito", sans-serif;
+
+@mixin buttonStyles {
+  background-color: #00a5cf;
+  color: #fff;
+  width: $buttonWidth;
+  height: 50px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #edeff1;
+  }
+}
+
+.container {
+  &__title {
+    font-size: 24px;
+    color: #333;
+    min-width: 200px;
+    max-width: 450px;
+    padding: 15px;
+    word-break: break-all;
+  }
+
+  &__button {
+    margin: 5px;
+    font-family: $font;
+    color: $buttonTextColor;
+    font-size: 18px;
+    @include buttonStyles;
+  }
+}

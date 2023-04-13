@@ -1,0 +1,20 @@
+@import "../newCompliment/NewCompliment.scss";
+
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $formcontainerbgColor;
+  width: 100vw;
+  height: 100vh;
+
+  &__authForm {
+    margin: auto;
+  }
+
+  &__form {
+    padding: 25px;
+    background-color: $formbgColor;
+    border-radius: 10px;
+  }
+}
