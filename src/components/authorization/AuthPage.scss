@@ -1,4 +1,7 @@
 @import "../newCompliment/NewCompliment.scss";
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
+$font: "Dosis", sans-serif;
 
 .authContainer {
   display: flex;
@@ -16,5 +19,12 @@
     padding: 25px;
     background-color: $formbgColor;
     border-radius: 10px;
+  }
+
+  &__errNotification {
+    text-align: center;
+    color: black;
+    font-family: $font;
+    height: 20px;
   }
 }

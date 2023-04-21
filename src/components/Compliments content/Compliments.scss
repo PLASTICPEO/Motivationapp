@@ -4,10 +4,19 @@ $bgColor: #eef4f3;
 $font: "Dosis", sans-serif;
 
 .mainContainer {
-  position: absolute;
   width: 100vw;
   height: 100vh;
-  transition: width 3s ease-in-out;
+
+  &__adminBtn {
+    padding: 5px;
+    margin: 3px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .container {
@@ -16,6 +25,7 @@ $font: "Dosis", sans-serif;
   align-items: center;
   flex-direction: column;
   width: min-content;
+  transition: all 3s;
   font-family: $font;
   margin: 200px auto;
   padding: 10px 30px;

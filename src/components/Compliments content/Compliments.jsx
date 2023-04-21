@@ -1,42 +1,37 @@
 import { useEffect, useState } from "react";
-import Buttons from "../Buttons/Buttons";
+import { Link } from "react-router-dom";
+import { SettingOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import Buttons from "./Buttons/Buttons";
 import api from "../../../public/services/api";
-import { Link, useNavigate } from "react-router-dom";
 import "./Compliments.scss";
 
 const Compliments = () => {
+  const navigate = useNavigate();
   const [compliment, setCompliment] = useState([]);
 
   useEffect(() => {
-    api
-      .get() // assuming this is the endpoint to fetch compliments data
-      .then((response) => {
-        const compliments = response.data; // assuming the array of compliments is under "compliments" property in the response data
-        if (compliments && compliments.length > 0) {
-          setCompliment(
-            compliments[Math.floor(Math.random() * compliments.length)]
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching compliments:", error);
-      });
+    api.get("/api/compliments").then((response) => {
+      const compliments = response.data;
+
+      if (compliments && compliments.length > 0) {
+        setCompliment(
+          compliments[Math.floor(Math.random() * compliments.length)]
+        );
+      }
+    });
   }, []);
 
   const nextCompliment = () => {
-    api
-      .get()
-      .then((response) => {
-        const compliments = response.data;
-        if (compliments && compliments.length > 0) {
-          setCompliment(
-            compliments[Math.floor(Math.random() * compliments.length)]
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching compliments:", error);
-      });
+    api.get("/api/compliments").then((response) => {
+      const compliments = response.data;
+
+      if (compliments && compliments.length > 0) {
+        setCompliment(
+          compliments[Math.floor(Math.random() * compliments.length)]
+        );
+      }
+    });
   };
 
   return (
@@ -47,9 +42,16 @@ const Compliments = () => {
           backgroundColor: compliment.color,
         }}
       >
+        <button
+          onClick={() => navigate("/authpage")}
+          className="mainContainer__adminBtn"
+        >
+          <SettingOutlined /> admin
+        </button>
         <div className="container">
           <h1 className="container__text" style={{ color: compliment.color }}>
-            “ {compliment.text}
+            <span style={{ fontSize: "38px" }}> “ </span>
+            {compliment.text}
           </h1>
           <span
             className="container__author"

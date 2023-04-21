@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite",
     "json-server": "json-server --watch db.json --port 3001",
+    "build:ui": "rm -rf build && cd ../frontend && yarn run build && cp -r build ../backend",
+    "deploy:full": "yanr run build:ui && git add . && git commit -m uibuild && git push",
     "build": "vite build",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "antd": "^5.4.0",

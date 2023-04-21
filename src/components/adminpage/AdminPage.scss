@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
+$font: "Dosis", sans-serif;
+
+.adminContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #63a375;
+
+  &__content {
+    align-items: center;
+    width: 750px;
+    height: 100vh;
+    padding: 25px;
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #7b7d7c;
+      box-shadow: inset 0 0 5px grey;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #111111;
+    }
+  }
+
+  &__title {
+    border-bottom: 2px solid rgb(85, 82, 82);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: aliceblue;
+    font-family: $font;
+    box-shadow: 0px 3px 5px 0px white;
+  }
+
+  &__texts {
+    padding: 5px;
+    font-family: $font;
+    width: max-content;
+    background-color: #ffe381;
+    border-radius: 10px;
+    margin: 5px;
+    font-weight: bold;
+    position: relative;
+  }
+  &__notification {
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    font-family: $font;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  &__author {
+    margin-right: 10px;
+  }
+
+  &__addBtn,
+  &__removeBtn {
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #018e42;
+    color: aliceblue;
+    width: 50px;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &__removeBtn {
+    background-color: #bf1a2f;
+    width: 70px;
+  }
+}

@@ -1,9 +1,10 @@
-import { Button, Form, Input, InputNumber } from "antd";
+import { Button, Form, Input } from "antd";
 import { CheckCircleTwoTone } from "@ant-design/icons";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import api from "../../../public/services/api";
 import "./NewCompliment.scss";
-import { useState } from "react";
+
 const layout = {
   labelCol: {
     span: 8,
@@ -24,14 +25,33 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
+
 /* eslint-enable no-template-curly-in-string */
 
 const NewCompliment = () => {
   const navigate = useNavigate();
   const [thank, setThank] = useState(false);
 
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const onFinish = (values) => {
-    api.post("http://localhost:3001/compliments", values.user).then(() => {
+    const color = getRandomColor();
+
+    const newQuoteObj = {
+      text: values.user.text,
+      author: values.user.author,
+      color: color,
+    };
+
+    api.post("/api/receiveTexts", newQuoteObj).then((response) => {
+      console.log(response);
       setThank(true);
       const timer = setTimeout(() => {
         setThank(false);
@@ -45,14 +65,14 @@ const NewCompliment = () => {
     <div className="formContainer">
       <div className="formContainer__form">
         {!thank ? (
-          <h1 className="formContainer__title">{`კომპლიმენტის დამატება`}</h1>
+          <h1 className="formContainer__title">{`ციტატის დამატება`}</h1>
         ) : (
           ""
         )}
 
         {thank ? (
           <h1 className="formContainer__title">
-            {`კომპლიმენტი წარმატებით გაიგზავნა`}
+            {`ციტატა წარმატებით გაიგზავნა`}
             <br />
             <CheckCircleTwoTone
               style={{ fontSize: "55px", marginTop: "25px" }}
@@ -93,8 +113,19 @@ const NewCompliment = () => {
             >
               <Input />
             </Form.Item>
+            <Form.Item
+              name={["user", "author"]}
+              label="Author"
+              rules={[
+                {
+                  type: "Author",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-            <Form.Item name={["user", "introduction"]} label="Compliment">
+            <Form.Item name={["user", "text"]} label="Text">
               <Input.TextArea />
             </Form.Item>
             <Form.Item
@@ -105,13 +136,24 @@ const NewCompliment = () => {
             >
               <Button
                 type="primary"
+                style={{
+                  alignItems: "center",
+                  width: "150px",
+                  marginRight: "15px",
+                }}
+                onClick={() => navigate("/")}
+              >
+                Back to home page
+              </Button>
+              <Button
+                type="primary"
                 htmlType="submit"
                 style={{
                   alignItems: "center",
                   width: "150px",
                 }}
               >
-                {thank ? "Go back" : "Submit"}
+                Submit
               </Button>
             </Form.Item>
           </Form>

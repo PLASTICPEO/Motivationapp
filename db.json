@@ -73,9 +73,11 @@
       "color": "#D57A66"
     },
     {
-      "email": "giodavlasheridze88@gmail.com",
-      "password": "giogio",
-      "id": 13
+      "text": "Don't go back, walk forward",
+      "source": "James bond",
+      "color": "#1E1912",
+      "id": 14
     }
-  ]
+  ],
+  "receiveTexts": []
 }

@@ -1,13 +1,20 @@
 import { Button, Checkbox, Form, Input } from "antd";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/useContext";
+import { useContext, useState } from "react";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+
 import api from "../../../public/services/api";
 import "./AuthPage.scss";
-import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
+  const { setIsAuthenticated } = useContext(AuthContext);
+  const [errNotification, setErrNotification] = useState(false);
+
   const navigate = useNavigate();
   const onFinish = (values) => {
     api
-      .get()
+      .get("/api/admins")
       .then((response) => {
         const admin = response.data.find(
           (findAdmin) =>
@@ -16,14 +23,23 @@ const AuthPage = () => {
         );
 
         if (admin) {
+          setIsAuthenticated(true);
           navigate("/adminpage");
+        } else {
+          setErrNotification(true);
+          const notificationTimer = setTimeout(() => {
+            setErrNotification(false);
+          }, 4000);
+          return () => clearTimeout(notificationTimer);
         }
       })
       .catch(() => console.log("error info"));
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div className="authContainer">
       <div className="authContainer__authForm">
@@ -94,6 +110,16 @@ const AuthPage = () => {
               </Button>
             </Form.Item>
           </Form>
+          <div className="authContainer__errNotification">
+            {errNotification ? (
+              <p style={{ color: "#BF1A2F" }}>
+                <ExclamationCircleOutlined style={{ color: "#BF1A2F" }} /> Admin
+                not found ...
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>
