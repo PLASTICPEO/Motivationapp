@@ -29,7 +29,7 @@ const Quote = () => {
         setCompliment(
           compliments[Math.floor(Math.random() * compliments.length)]
         );
-      }, 1000);
+      }, 900);
       const container = document.querySelector(".container");
       container.style.opacity = 0;
       container.style.transform = "scale(0.9)";

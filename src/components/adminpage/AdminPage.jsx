@@ -127,7 +127,7 @@ const AdminPage = () => {
         <Menu
           onClick={onClick}
           style={{
-            display: menuToggle ? "block" : "none",
+            display: menuToggle ? "none" : "block",
             width: "256px",
             backgroundColor: "#E3E4DB",
             height: "100%",
