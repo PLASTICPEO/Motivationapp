@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/useContext";
 import { useContext, useState } from "react";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-
+import { AUTH_PROPS } from "../../../public/services/constants/constants";
 import api from "../../../public/services/api";
 import "./AuthPage.scss";
 
@@ -12,6 +12,7 @@ const AuthPage = () => {
   const [errNotification, setErrNotification] = useState(false);
 
   const navigate = useNavigate();
+
   const onFinish = (values) => {
     api
       .get("/api/admins")
@@ -23,6 +24,7 @@ const AuthPage = () => {
         );
 
         if (admin) {
+          localStorage.setItem(AUTH_PROPS, admin.id);
           setIsAuthenticated(true);
           navigate("/adminpage");
         } else {
@@ -33,7 +35,7 @@ const AuthPage = () => {
           return () => clearTimeout(notificationTimer);
         }
       })
-      .catch(() => console.log("error info"));
+      .catch((err) => console.log(err));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -44,6 +46,7 @@ const AuthPage = () => {
     <div className="authContainer">
       <div className="authContainer__authForm">
         <div className="authContainer__form">
+          <h1 className="authContainer__title">Authorization</h1>
           <Form
             name="basic"
             labelCol={{
@@ -54,6 +57,9 @@ const AuthPage = () => {
             }}
             style={{
               maxWidth: 600,
+              minWidth: 300,
+              height: 250,
+              margin: "auto",
             }}
             initialValues={{
               remember: true,
@@ -65,6 +71,7 @@ const AuthPage = () => {
             <Form.Item
               label="email"
               name="email"
+              style={{ width: "450px", marginRight: "150px" }}
               rules={[
                 {
                   required: true,
@@ -78,6 +85,7 @@ const AuthPage = () => {
             <Form.Item
               label="Password"
               name="password"
+              style={{ width: "450px", marginRight: "150px" }}
               rules={[
                 {
                   required: true,
@@ -101,7 +109,7 @@ const AuthPage = () => {
 
             <Form.Item
               wrapperCol={{
-                offset: 8,
+                offset: 10,
                 span: 16,
               }}
             >

@@ -1,10 +1,9 @@
-$formcontainerbgColor: #98c3a4;
-$formbgColor: #63a375;
+$formcontainerbgColor: #30343f;
+$formbgColor: #e1e1dd;
 
 * {
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .formContainer {
@@ -17,14 +16,66 @@ $formbgColor: #63a375;
   width: 100vw;
   height: 100vh;
 
+  @media (max-width: 700px) {
+    width: 400px;
+  }
+
   &__form {
     border-radius: 10px;
     padding: 25px;
+    background-color: $formbgColor;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 5px 0px,
+      rgba(255, 255, 255, 0.1) 0px 0px 10px 5px;
+    position: relative;
+  }
+
+  &__social {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
     background-color: $formbgColor;
   }
 
   &__title {
     margin-bottom: 50px;
-    color: aliceblue;
+    color: #30343f;
+  }
+
+  &__linkedin {
+    padding: 5px;
+    border: none;
+    text-align: center;
+    font-size: 28px;
+    color: #067bc2;
+    background-color: #30343f;
+    border-radius: 4px;
+    margin: 5px;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(0.96);
+    }
+  }
+
+  &__github {
+    padding: 5px;
+    border: none;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    background-color: #30343f;
+    border-radius: 4px;
+    margin: 5px;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(0.96);
+    }
+  }
+  &__appAuthor {
+    font-family: "Caveat", cursive;
+    color: #e1e1dd;
+    font-size: 22px;
+    margin-top: 10px;
   }
 }

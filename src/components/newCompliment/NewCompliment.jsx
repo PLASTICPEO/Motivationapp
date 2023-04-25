@@ -1,5 +1,9 @@
 import { Button, Form, Input } from "antd";
-import { CheckCircleTwoTone } from "@ant-design/icons";
+import {
+  CheckCircleTwoTone,
+  LinkedinOutlined,
+  GithubOutlined,
+} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import api from "../../../public/services/api";
@@ -32,26 +36,31 @@ const NewCompliment = () => {
   const navigate = useNavigate();
   const [thank, setThank] = useState(false);
 
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
   const onFinish = (values) => {
-    const color = getRandomColor();
+    let randColor = [
+      "#16a085",
+      "#27ae60",
+      "#2c3e50",
+      "#f39c12",
+      "#e74c3c",
+      "#9b59b6",
+      "#FB6964",
+      "#342224",
+      "#472E32",
+      "#BDBB99",
+      "#77B1A9",
+      "#73A857",
+    ];
+    const color = randColor[Math.floor(Math.random() * randColor.length)];
 
     const newQuoteObj = {
       text: values.user.text,
       author: values.user.author,
+      approved: false,
       color: color,
     };
 
-    api.post("/api/receiveTexts", newQuoteObj).then((response) => {
-      console.log(response);
+    api.post("/api/compliments/create", newQuoteObj).then((response) => {
       setThank(true);
       const timer = setTimeout(() => {
         setThank(false);
@@ -126,7 +135,10 @@ const NewCompliment = () => {
             </Form.Item>
 
             <Form.Item name={["user", "text"]} label="Text">
-              <Input.TextArea />
+              <Input.TextArea
+                style={{ resize: "none", height: "100px" }}
+                placeholder="Type a quote ..."
+              />
             </Form.Item>
             <Form.Item
               wrapperCol={{
@@ -139,6 +151,7 @@ const NewCompliment = () => {
                 style={{
                   alignItems: "center",
                   width: "150px",
+
                   marginRight: "15px",
                 }}
                 onClick={() => navigate("/")}
@@ -158,7 +171,20 @@ const NewCompliment = () => {
             </Form.Item>
           </Form>
         )}
+        <div className="formContainer__social">
+          <button className="formContainer__linkedin">
+            <a href="https://www.linkedin.com/in/gio-davlasheridze-56b770228/">
+              <LinkedinOutlined className="formContainer__linkedin" />
+            </a>
+          </button>
+          <button className="formContainer__github">
+            <a href="https://github.com/PLASTICPEO">
+              <GithubOutlined className="formContainer__github" />
+            </a>
+          </button>
+        </div>
       </div>
+      <span className="formContainer__appAuthor">by plastic</span>
     </div>
   );
 };

@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
+$bgColor: #e1e1dd;
+$font: "Dosis", sans-serif;
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s ease-in-out;
+  position: relative;
+
+  &__adminBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4e504e;
+    color: #e1e1dd;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__audioBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.container {
+  flex-direction: column;
+  width: min-content;
+  font-family: $font;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: $bgColor;
+  word-wrap: break-word;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: all 1s ease-in-out;
+
+  &__text {
+    font-size: 26px;
+    font-weight: bold;
+    transition: all 1s ease-in-out;
+  }
+  @media (max-width: 720px) {
+    width: 450px;
+    margin-top: 100px;
+    &__text {
+      font-size: 18px;
+    }
+  }
+
+  &__author {
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    width: 85%;
+    text-align: end;
+    letter-spacing: 1px;
+    font-family: "Caveat", cursive;
+
+    transition: all 1s ease-in-out;
+    @media (max-width: 720px) {
+      font-size: 12px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    @media (max-width: 720px) {
+      display: block;
+    }
+  }
+}

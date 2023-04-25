@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { MailOutlined, SettingOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
+import { useContext } from "react";
+import { AuthContext } from "../../context/useContext";
 import { useNavigate } from "react-router-dom";
+import { AUTH_PROPS } from "../../../public/services/constants/constants";
 import api from "../../../public/services/api";
 import "./AdminPage.scss";
 
@@ -34,28 +37,34 @@ const items = [
 ];
 
 const AdminPage = () => {
+  const { setIsAuthenticated } = useContext(AuthContext);
   const [deleteQuote, setDeleteQuote] = useState(false);
   const [receivedQuotes, setReceivedQuotes] = useState([]);
   const [actionNotification, setActionNotification] = useState("");
 
   useEffect(() => {
-    api
-      .get("/api/receiveTexts")
-      .then((response) => setReceivedQuotes(response.data));
+    api.get("/api/compliments").then((response) => {
+      const noApprovedQuotes = response.data.filter((res) => !res.approved);
+      setReceivedQuotes(noApprovedQuotes);
+    });
   }, [deleteQuote]);
 
   const addQuote = (quote) => {
-    console.log(quote);
-    const getRandomColor = () => {
-      const letters = "0123456789ABCDEF";
-      let color = "#";
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    };
-
-    const color = getRandomColor();
+    let randColor = [
+      "#16a085",
+      "#27ae60",
+      "#2c3e50",
+      "#f39c12",
+      "#e74c3c",
+      "#9b59b6",
+      "#FB6964",
+      "#342224",
+      "#472E32",
+      "#BDBB99",
+      "#77B1A9",
+      "#73A857",
+    ];
+    const color = randColor[Math.floor(Math.random() * randColor.length)];
 
     const newQuoteObj = {
       text: quote.text,
@@ -63,7 +72,7 @@ const AdminPage = () => {
       color: color,
     };
 
-    api.post(`/api/compliments`, newQuoteObj).then(() => {
+    api.post(`/api/compliments/approve/${quote.id}`, newQuoteObj).then(() => {
       setDeleteQuote(!deleteQuote);
       setActionNotification(
         `added "${newQuoteObj.text.slice(
@@ -76,14 +85,10 @@ const AdminPage = () => {
       }, 5000);
       return () => clearTimeout(notificationTimer);
     });
-
-    api.delete(`/api/receiveTexts/${quote.id}`).then(() => {
-      setDeleteQuote(!deleteQuote);
-    });
   };
 
   const removeQuote = (quote) => {
-    api.delete(`/api/receiveTexts/${quote.id}`).then(() => {
+    api.delete(`/api/compliments/remove/${quote.id}`).then(() => {
       setActionNotification(
         `Removed "${quote.text.slice(0, quote.text.length / 2.3)}" ...`
       );
@@ -99,13 +104,11 @@ const AdminPage = () => {
 
   const onClick = (e) => {
     if (e.key === "tmp-1") {
+      setIsAuthenticated(false);
+      localStorage.removeItem(AUTH_PROPS);
       navigate("/");
     }
   };
-
-  useEffect(() => {
-    console.log(actionNotification);
-  }, [actionNotification]);
 
   return (
     <div className="adminContainer">
@@ -114,7 +117,8 @@ const AdminPage = () => {
           onClick={onClick}
           style={{
             width: "256px",
-            backgroundColor: "#E6E8E6",
+            backgroundColor: "#E3E4DB",
+            height: "100%",
           }}
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}

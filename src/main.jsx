@@ -6,9 +6,9 @@ import App from "./App";
 import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <Router>
+  <Router>
+    <AuthProvider>
       <App />
-    </Router>
-  </AuthProvider>
+    </AuthProvider>
+  </Router>
 );
