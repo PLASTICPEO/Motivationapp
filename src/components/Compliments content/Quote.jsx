@@ -53,7 +53,7 @@ const Quote = () => {
           onClick={() => navigate("/authpage")}
           className="main__adminBtn"
         >
-          <SettingOutlined /> manager
+          <SettingOutlined /> Staff only
         </button>
         <div className="main__audioBtn">
           <AudioPlayer />

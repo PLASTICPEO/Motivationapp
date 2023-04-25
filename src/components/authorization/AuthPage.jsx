@@ -17,10 +17,14 @@ const AuthPage = () => {
     api
       .get("/api/admins")
       .then((response) => {
+        const emailRecognition =
+          values.email.trim().slice(0, 1).toLowerCase() +
+          values.email.trim().slice(1, values.length);
+
         const admin = response.data.find(
           (findAdmin) =>
-            findAdmin.email === values.email &&
-            findAdmin.password === values.password
+            findAdmin.email === emailRecognition &&
+            findAdmin.password.toLowerCase() === values.password.toLowerCase()
         );
 
         if (admin) {

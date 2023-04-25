@@ -24,7 +24,7 @@ const items = [
       "Item 1",
       "g1",
       null,
-      [getItem("შემოსული ტექსტები"), getItem("Back to homepage")],
+      [getItem("შემოსული ტექსტები"), getItem("Log out")],
       "group"
     ),
   ]),

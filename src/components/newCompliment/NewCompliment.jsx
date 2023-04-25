@@ -163,18 +163,22 @@ const NewCompliment = () => {
             </Form.Item>
           </Form>
         )}
-        <div className="formContainer__social">
-          <button className="formContainer__linkedin">
-            <a href="https://www.linkedin.com/in/gio-davlasheridze-56b770228/">
-              <LinkedinOutlined className="formContainer__linkedin" />
-            </a>
-          </button>
-          <button className="formContainer__github">
-            <a href="https://github.com/PLASTICPEO">
-              <GithubOutlined className="formContainer__github" />
-            </a>
-          </button>
-        </div>
+        {thank ? (
+          ""
+        ) : (
+          <div className="formContainer__social">
+            <button className="formContainer__linkedin">
+              <a href="https://www.linkedin.com/in/gio-davlasheridze-56b770228/">
+                <LinkedinOutlined className="formContainer__linkedin" />
+              </a>
+            </button>
+            <button className="formContainer__github">
+              <a href="https://github.com/PLASTICPEO">
+                <GithubOutlined className="formContainer__github" />
+              </a>
+            </button>
+          </div>
+        )}
       </div>
       <span className="formContainer__appAuthor">by plastic</span>
     </div>

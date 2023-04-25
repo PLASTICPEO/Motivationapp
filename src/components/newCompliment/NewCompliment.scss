@@ -29,14 +29,10 @@ $formbgColor: #e1e1dd;
     @media (max-width: 780px) {
       width: 400px;
       padding: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
     }
     @media (max-width: 500px) {
       width: 300px;
-      padding: 25px;
+      padding: 15px;
     }
   }
 
@@ -71,7 +67,7 @@ $formbgColor: #e1e1dd;
     border: none;
     text-align: center;
     font-size: 28px;
-    color: #067bc2;
+    color: #fff;
     background-color: #30343f;
     border-radius: 4px;
     margin-right: 5px;
