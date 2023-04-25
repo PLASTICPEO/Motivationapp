@@ -57,9 +57,7 @@ const AuthPage = () => {
             }}
             style={{
               maxWidth: 600,
-              minWidth: 300,
               height: 250,
-              margin: "auto",
             }}
             initialValues={{
               remember: true,
@@ -71,7 +69,7 @@ const AuthPage = () => {
             <Form.Item
               label="email"
               name="email"
-              style={{ width: "450px", marginRight: "150px" }}
+              className="authContainer__email"
               rules={[
                 {
                   required: true,
@@ -85,7 +83,7 @@ const AuthPage = () => {
             <Form.Item
               label="Password"
               name="password"
-              style={{ width: "450px", marginRight: "150px" }}
+              className="authContainer__password"
               rules={[
                 {
                   required: true,
@@ -100,7 +98,7 @@ const AuthPage = () => {
               name="remember"
               valuePropName="checked"
               wrapperCol={{
-                offset: 8,
+                offset: 6,
                 span: 16,
               }}
             >
@@ -109,7 +107,7 @@ const AuthPage = () => {
 
             <Form.Item
               wrapperCol={{
-                offset: 10,
+                offset: 9,
                 span: 16,
               }}
             >

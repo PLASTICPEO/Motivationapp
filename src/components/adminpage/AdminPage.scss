@@ -7,13 +7,20 @@ $font: "Dosis", sans-serif;
   width: 100vw;
   height: 100vh;
   background-color: #30343f;
+  position: relative;
+
+  &__menuBtn {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+  }
 
   &__content {
     align-items: center;
     width: 750px;
     height: 100vh;
     padding: 25px;
-
+    margin-left: 20px;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -52,12 +59,12 @@ $font: "Dosis", sans-serif;
     position: relative;
   }
   &__notification {
-    position: absolute;
-    top: 0%;
-    left: 40%;
+    height: 50px;
     font-family: $font;
-    color: black;
+    font-size: 22px;
+    color: rgb(247, 244, 244);
     font-weight: bold;
+    letter-spacing: 2px;
     border-radius: 5px;
     padding: 5px;
   }

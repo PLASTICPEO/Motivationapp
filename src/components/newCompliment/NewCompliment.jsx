@@ -43,13 +43,20 @@ const NewCompliment = () => {
       "#2c3e50",
       "#f39c12",
       "#e74c3c",
-      "#9b59b6",
       "#FB6964",
       "#342224",
       "#472E32",
       "#BDBB99",
       "#77B1A9",
       "#73A857",
+      "#454E9E",
+      "#AC92A6",
+      "#A5C882",
+      "#514F59",
+      "#EDB88B",
+      "#FAD8D6",
+      "#AF5D63",
+      "#119DA4",
     ];
     const color = randColor[Math.floor(Math.random() * randColor.length)];
 
@@ -93,14 +100,9 @@ const NewCompliment = () => {
             {...layout}
             name="nest-messages"
             onFinish={onFinish}
-            style={{
-              maxWidth: 600,
-              marginRight: "200px",
-            }}
             validateMessages={validateMessages}
           >
             <Form.Item
-              style={{ width: "600px" }}
               name={["user", "name"]}
               label="Full name"
               rules={[
@@ -146,28 +148,18 @@ const NewCompliment = () => {
                 offset: 8,
               }}
             >
-              <Button
-                type="primary"
-                style={{
-                  alignItems: "center",
-                  width: "150px",
-
-                  marginRight: "15px",
-                }}
-                onClick={() => navigate("/")}
-              >
-                Back to home page
-              </Button>
-              <Button
-                type="primary"
-                htmlType="submit"
-                style={{
-                  alignItems: "center",
-                  width: "150px",
-                }}
-              >
-                Submit
-              </Button>
+              <div className="formContainer__buttonsContainer">
+                <Button
+                  type="primary"
+                  onClick={() => navigate("/")}
+                  className="formContainer__btpButton"
+                >
+                  Back to home page
+                </Button>
+                <Button type="primary" htmlType="submit">
+                  Submit
+                </Button>
+              </div>
             </Form.Item>
           </Form>
         )}

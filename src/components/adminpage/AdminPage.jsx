@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MailOutlined, SettingOutlined } from "@ant-design/icons";
+import { MailOutlined, SettingOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useContext } from "react";
 import { AuthContext } from "../../context/useContext";
@@ -38,6 +38,7 @@ const items = [
 
 const AdminPage = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
+  const [menuToggle, setMenuToggle] = useState(false);
   const [deleteQuote, setDeleteQuote] = useState(false);
   const [receivedQuotes, setReceivedQuotes] = useState([]);
   const [actionNotification, setActionNotification] = useState("");
@@ -112,13 +113,25 @@ const AdminPage = () => {
 
   return (
     <div className="adminContainer">
-      <div className="admincontainer_menu">
+      <div className="admincontainer__menu">
+        <MenuOutlined
+          style={{
+            position: "absolute",
+            left: "0.3%",
+            top: "1%",
+            fontSize: "22px",
+            color: "gray",
+          }}
+          onClick={() => setMenuToggle(!menuToggle)}
+        />
         <Menu
           onClick={onClick}
           style={{
+            display: menuToggle ? "block" : "none",
             width: "256px",
             backgroundColor: "#E3E4DB",
             height: "100%",
+            paddingLeft: "25px",
           }}
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}

@@ -15,18 +15,29 @@ $formbgColor: #e1e1dd;
   background-color: $formcontainerbgColor;
   width: 100vw;
   height: 100vh;
-
-  @media (max-width: 700px) {
-    width: 400px;
-  }
+  overflow: hidden;
 
   &__form {
     border-radius: 10px;
     padding: 25px;
+    width: 800px;
+    padding-right: 140px;
     background-color: $formbgColor;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 5px 0px,
       rgba(255, 255, 255, 0.1) 0px 0px 10px 5px;
     position: relative;
+    @media (max-width: 780px) {
+      width: 400px;
+      padding: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    @media (max-width: 500px) {
+      width: 300px;
+      padding: 25px;
+    }
   }
 
   &__social {
@@ -34,11 +45,25 @@ $formbgColor: #e1e1dd;
     bottom: 5%;
     left: 5%;
     background-color: $formbgColor;
+    @media (max-width: 780px) {
+      bottom: 2%;
+      left: 5%;
+    }
   }
 
   &__title {
-    margin-bottom: 50px;
+    margin-left: 130px;
+    padding-bottom: 25px;
     color: #30343f;
+    @media (max-width: 780px) {
+      padding-bottom: 25px;
+      margin-left: 50px;
+    }
+
+    @media (max-width: 500px) {
+      padding-bottom: 25px;
+      margin-left: 20px;
+    }
   }
 
   &__linkedin {
@@ -49,11 +74,13 @@ $formbgColor: #e1e1dd;
     color: #067bc2;
     background-color: #30343f;
     border-radius: 4px;
-    margin: 5px;
-
+    margin-right: 5px;
     &:hover {
       opacity: 0.8;
       transform: scale(0.96);
+    }
+    @media (max-width: 780px) {
+      font-size: 18px;
     }
   }
 
@@ -65,11 +92,14 @@ $formbgColor: #e1e1dd;
     color: #fff;
     background-color: #30343f;
     border-radius: 4px;
-    margin: 5px;
 
     &:hover {
       opacity: 0.8;
       transform: scale(0.96);
+    }
+
+    @media (max-width: 780px) {
+      font-size: 18px;
     }
   }
   &__appAuthor {
@@ -77,5 +107,27 @@ $formbgColor: #e1e1dd;
     color: #e1e1dd;
     font-size: 22px;
     margin-top: 10px;
+  }
+
+  &__buttonsContainer {
+    display: block;
+    @media (max-width: 780px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 10px;
+    }
+    @media (max-width: 500px) {
+      margin-right: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__btpButton {
+    margin: 15px;
   }
 }

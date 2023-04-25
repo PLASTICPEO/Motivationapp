@@ -3,6 +3,20 @@
 
 $font: "Dosis", sans-serif;
 
+@mixin theme() {
+  margin-right: 100px;
+  width: 450px;
+
+  @media (max-width: 720px) {
+    width: 300px;
+    margin-right: 50px;
+  }
+  @media (max-width: 580px) {
+    width: 200px;
+    margin: auto;
+  }
+}
+
 .authContainer {
   display: flex;
   justify-content: center;
@@ -10,6 +24,7 @@ $font: "Dosis", sans-serif;
   background-color: $formcontainerbgColor;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 
   &__title {
     font-family: $font;
@@ -19,6 +34,18 @@ $font: "Dosis", sans-serif;
 
   &__authForm {
     margin: auto;
+    width: 550px;
+    @media (max-width: 720px) {
+      width: 400px;
+      padding: 20px;
+    }
+  }
+
+  &__email {
+    @include theme;
+  }
+  &__password {
+    @include theme;
   }
 
   &__form {

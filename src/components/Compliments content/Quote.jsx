@@ -62,7 +62,7 @@ const Quote = () => {
         <div className="container">
           <p className="container__text" style={{ color: compliment.color }}>
             <span
-              class="material-symbols-outlined"
+              className="material-symbols-outlined"
               style={{ fontSize: "26px" }}
             >
               format_quote
