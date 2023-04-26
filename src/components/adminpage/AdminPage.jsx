@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { MailOutlined, SettingOutlined, MenuOutlined } from "@ant-design/icons";
+import {
+  MailOutlined,
+  SettingOutlined,
+  MenuOutlined,
+  ImportOutlined,
+} from "@ant-design/icons";
 import { Menu } from "antd";
 import { useContext } from "react";
 import { AuthContext } from "../../context/useContext";
@@ -19,6 +24,9 @@ function getItem(label, key, icon, children, type) {
 }
 
 const items = [
+  getItem("Navigation Three", "sub4", <SettingOutlined />, [
+    getItem("Option 9", "9"),
+  ]),
   getItem("Received Texts", "sub1", <MailOutlined />, [
     getItem(
       "Item 1",
@@ -31,9 +39,6 @@ const items = [
   {
     type: "divider",
   },
-  getItem("Navigation Three", "sub4", <SettingOutlined />, [
-    getItem("Option 9", "9"),
-  ]),
 ];
 
 const AdminPage = () => {
@@ -103,7 +108,8 @@ const AdminPage = () => {
 
   const navigate = useNavigate();
 
-  const onClick = (e) => {
+  const menuOptions = (e) => {
+    console.log(e);
     if (e.key === "tmp-1") {
       setIsAuthenticated(false);
       localStorage.removeItem(AUTH_PROPS);
@@ -125,13 +131,14 @@ const AdminPage = () => {
           onClick={() => setMenuToggle(!menuToggle)}
         />
         <Menu
-          onClick={onClick}
+          onClick={menuOptions}
+          className="menuBar"
           style={{
             display: menuToggle ? "none" : "block",
-            width: "256px",
-            backgroundColor: "#E3E4DB",
+            backgroundColor: "#4F5D75",
+            color: "white",
             height: "100%",
-            paddingLeft: "25px",
+            paddingLeft: "10px",
           }}
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
@@ -156,18 +163,20 @@ const AdminPage = () => {
               <strong className="adminContainer__author">
                 - {quote.author}
               </strong>
-              <button
-                className="adminContainer__addBtn"
-                onClick={() => addQuote(quote)}
-              >
-                Add
-              </button>
-              <button
-                className="adminContainer__removeBtn"
-                onClick={() => removeQuote(quote)}
-              >
-                Remove
-              </button>
+              <div>
+                <button
+                  className="adminContainer__addBtn"
+                  onClick={() => addQuote(quote)}
+                >
+                  Add
+                </button>
+                <button
+                  className="adminContainer__removeBtn"
+                  onClick={() => removeQuote(quote)}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           );
         })}

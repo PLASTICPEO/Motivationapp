@@ -20,8 +20,16 @@ $font: "Dosis", sans-serif;
     width: 750px;
     height: 100vh;
     padding: 25px;
-    margin-left: 20px;
+    margin-left: 10px;
     overflow-y: scroll;
+    @media (max-width: 845px) {
+      padding: 5px;
+      margin-left: 5px;
+    }
+    @media (max-width: 550px) {
+      padding: 5px;
+      margin-left: 0px;
+    }
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -49,14 +57,26 @@ $font: "Dosis", sans-serif;
   }
 
   &__texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 5px;
     font-family: $font;
-    width: max-content;
+    width: 400px;
     background-color: #ffe381;
     border-radius: 10px;
     margin: 5px;
     font-weight: bold;
     position: relative;
+    line-height: 25px;
+    @media (max-width: 845px) {
+      width: 200px;
+    }
+    @media (max-width: 500px) {
+      width: 150px;
+      padding: 5px;
+    }
   }
   &__notification {
     height: 50px;
@@ -92,5 +112,17 @@ $font: "Dosis", sans-serif;
   &__removeBtn {
     background-color: #bf1a2f;
     width: 70px;
+  }
+}
+
+.menuBar {
+  max-width: 256px;
+
+  @media (max-width: 845px) {
+    width: 200px;
+  }
+  @media (max-width: 550px) {
+    width: 150px;
+    padding: 5px;
   }
 }
