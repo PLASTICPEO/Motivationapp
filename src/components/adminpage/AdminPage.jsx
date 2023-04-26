@@ -81,7 +81,7 @@ const AdminPage = () => {
     api.post(`/api/compliments/approve/${quote.id}`, newQuoteObj).then(() => {
       setDeleteQuote(!deleteQuote);
       setActionNotification(
-        `added "${newQuoteObj.text.slice(
+        `added: "${newQuoteObj.text.slice(
           0,
           newQuoteObj.text.length / 2.3
         )}" ...`
@@ -96,7 +96,7 @@ const AdminPage = () => {
   const removeQuote = (quote) => {
     api.delete(`/api/compliments/remove/${quote.id}`).then(() => {
       setActionNotification(
-        `Removed "${quote.text.slice(0, quote.text.length / 2.3)}" ...`
+        `Removed: "${quote.text.slice(0, quote.text.length / 2.3)}" ...`
       );
       const notificationTimer = setTimeout(() => {
         setActionNotification("");
@@ -138,7 +138,7 @@ const AdminPage = () => {
             backgroundColor: "#4F5D75",
             color: "white",
             height: "100%",
-            paddingLeft: "10px",
+            paddingLeft: "20px",
           }}
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
@@ -148,10 +148,11 @@ const AdminPage = () => {
       </div>
 
       <div className="adminContainer__content">
-        <h1 className="adminContainer__title">Received Texts</h1>
         <div className="adminContainer__notification">
           <p>{actionNotification ? actionNotification : ""}</p>
         </div>
+        <h1 className="adminContainer__title">Inbox</h1>
+
         {receivedQuotes.map((quote) => {
           return (
             <div

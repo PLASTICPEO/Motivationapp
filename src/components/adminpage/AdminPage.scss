@@ -19,7 +19,7 @@ $font: "Dosis", sans-serif;
     align-items: center;
     width: 750px;
     height: 100vh;
-    padding: 25px;
+    padding: 10px;
     margin-left: 10px;
     overflow-y: scroll;
     @media (max-width: 845px) {
@@ -28,7 +28,7 @@ $font: "Dosis", sans-serif;
     }
     @media (max-width: 550px) {
       padding: 5px;
-      margin-left: 0px;
+      margin-left: 5px;
     }
 
     &::-webkit-scrollbar {
@@ -50,10 +50,9 @@ $font: "Dosis", sans-serif;
     border-bottom: 2px solid rgb(85, 82, 82);
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 30px;
+    margin: 10px 25px 29px 30px;
     color: aliceblue;
     font-family: $font;
-    box-shadow: 0px 3px 5px 0px white;
   }
 
   &__texts {
@@ -62,15 +61,15 @@ $font: "Dosis", sans-serif;
     align-items: center;
     flex-direction: column;
     padding: 5px;
-    font-family: $font;
     width: 400px;
     background-color: #ffe381;
     border-radius: 10px;
-    margin: 5px;
+    line-height: 20px;
+    font-family: $font;
     font-weight: bold;
-    position: relative;
-    line-height: 25px;
+
     @media (max-width: 720px) {
+      margin-left: 25px;
       width: 350px;
     }
     @media (max-width: 500px) {
@@ -79,14 +78,16 @@ $font: "Dosis", sans-serif;
     }
   }
   &__notification {
-    height: 50px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-left: 25px;
     font-family: $font;
-    font-size: 22px;
-    color: rgb(247, 244, 244);
+    font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
+    color: rgb(247, 244, 244);
     border-radius: 5px;
-    padding: 5px;
   }
 
   &__author {
