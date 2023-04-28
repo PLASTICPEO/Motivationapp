@@ -1,1 +1,1 @@
-export const AUTH_PROPS = "****";
+export const AUTH_PROPS = "Identity";

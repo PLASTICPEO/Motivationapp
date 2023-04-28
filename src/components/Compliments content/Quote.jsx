@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SettingOutlined } from "@ant-design/icons";
+import { SettingOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Buttons from "./Buttons/Buttons";
 import api from "../../../public/services/api";
@@ -9,12 +9,14 @@ import AudioPlayer from "../newCompliment/Audio/AudioPlayer";
 
 const Quote = () => {
   const navigate = useNavigate();
+  const [mongoDelay, setMongoDelay] = useState(false);
   const [compliment, setCompliment] = useState([]);
 
   useEffect(() => {
     api.get("/api/compliments").then((response) => {
       const compliments = response.data;
       if (compliments && compliments.length > 0) {
+        setMongoDelay(true);
         setCompliment(
           compliments[Math.floor(Math.random() * compliment.length)]
         );
@@ -58,32 +60,35 @@ const Quote = () => {
         <div className="main__audioBtn">
           <AudioPlayer />
         </div>
+        {mongoDelay ? (
+          <div className="container">
+            <p className="container__text" style={{ color: compliment.color }}>
+              <span
+                className="material-symbols-outlined"
+                style={{ fontSize: "26px" }}
+              >
+                format_quote
+              </span>{" "}
+              {compliment.text}
+            </p>
+            <span className="container__author" style={{ color: "black" }}>
+              - {compliment.author}
+            </span>
+            <div className="container__buttons">
+              <Link to={"/addcompliment"} style={{ textDecoration: "none" }}>
+                <Buttons color={compliment.color} value={"დამატება"} />
+              </Link>
 
-        <div className="container">
-          <p className="container__text" style={{ color: compliment.color }}>
-            <span
-              className="material-symbols-outlined"
-              style={{ fontSize: "26px" }}
-            >
-              format_quote
-            </span>{" "}
-            {compliment.text}
-          </p>
-          <span className="container__author" style={{ color: "black" }}>
-            - {compliment.author}
-          </span>
-          <div className="container__buttons">
-            <Link to={"/addcompliment"} style={{ textDecoration: "none" }}>
-              <Buttons color={compliment.color} value={"დამატება"} />
-            </Link>
-
-            <Buttons
-              nextCompliment={nextCompliment}
-              color={compliment.color}
-              value={"შემდეგი"}
-            />
+              <Buttons
+                nextCompliment={nextCompliment}
+                color={compliment.color}
+                value={"შემდეგი"}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <LoadingOutlined style={{ fontSize: "38px" }} />
+        )}
       </div>
     </>
   );
